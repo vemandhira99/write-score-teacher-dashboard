@@ -125,3 +125,14 @@
 .filter-control strong{font-size:15px}
 .filter-control select{width:185px!important;height:38px!important;font-size:14px}
 .student-select select{width:205px!important}
+/* Polished Superset-like control row. */
+.filter-band{background:#f8fafc;border-top:1px solid #edf1f5;border-bottom:1px solid #dfe7ef}
+.filter-inner{max-width:1540px;min-height:62px;padding:10px 30px;gap:20px;align-items:center}
+.filter-heading{display:grid;place-items:center;width:34px;height:34px;padding:0;border-radius:7px;background:#eaf3ff}
+.filter-icon{margin:0;font-size:20px;line-height:1;color:#1769d4}
+.filter-control{height:38px;gap:9px}
+.filter-control strong{font-size:13px;letter-spacing:.25px;color:#344054}
+.filter-control select{width:176px!important;height:36px!important;padding:0 30px 0 11px;border-color:#d6e0ea;border-radius:6px;color:#667085;background-color:#fff;font-size:14px;box-shadow:0 1px 1px rgba(16,24,40,.02)}
+.student-select select{width:195px!important}
+.filter-control select:hover,.filter-control select:focus{border-color:#8ebcf1;outline:0;box-shadow:0 0 0 3px rgba(30,115,220,.1)}
+.reset-button{margin-left:auto;padding:7px 2px;color:#1769d4;font-size:14px}
