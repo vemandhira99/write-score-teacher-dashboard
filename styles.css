@@ -117,3 +117,11 @@
 .table-wrap thead{position:relative;z-index:3}
 .table-wrap th{z-index:4;background:#fff}
 .table-wrap td{position:relative;z-index:1}
+/* Compact scrolling filter bar for the shared demo page. */
+.filter-band{position:static!important;top:auto!important;z-index:auto!important}
+.filter-inner{min-height:56px;padding:7px 24px;gap:14px}
+.filter-icon{font-size:21px}
+.filter-control{gap:8px}
+.filter-control strong{font-size:15px}
+.filter-control select{width:185px!important;height:38px!important;font-size:14px}
+.student-select select{width:205px!important}
