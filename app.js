@@ -380,10 +380,6 @@ function renderRoster() {
       renderRoster();
     };
   });
-
-  $$('#rosterTable tbody tr[data-id]').forEach((row) => {
-    row.onclick = () => showDetail(row.dataset.id);
-  });
 }
 
 function renderSkillDetail() {
