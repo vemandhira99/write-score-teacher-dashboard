@@ -455,10 +455,9 @@ function showSkillTooltip(event, domain, skillName, rows) {
   tooltip.innerHTML = '<strong>' + escaped(domain) + ' - ' + escaped(skillName) + '</strong>'
     + ratings.map((rating) => {
       const count = rows.filter((row) => row.rating === rating).length;
-      const percent = total ? ((count / total) * 100).toFixed(2) : '0.00';
-      return '<span class="tooltip-rating"><i style="background:' + ratingColors[rating] + '"></i><b>' + rating + '</b><em>' + count + '</em><em>' + percent + '%</em></span>';
+      return '<span class="tooltip-rating"><i style="background:' + ratingColors[rating] + '"></i><b>' + rating + '</b><em>' + count + '</em></span>';
     }).join('')
-    + '<span class="tooltip-total"><b>Total</b><em>' + total + '</em><em>100.00%</em></span>';
+    + '<span class="tooltip-total"><b>Total</b><em>' + total + '</em></span>';
   tooltip.hidden = false;
   positionSkillTooltip(event);
 }
