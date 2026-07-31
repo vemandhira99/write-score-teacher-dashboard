@@ -208,3 +208,9 @@ body.modal-open{overflow:hidden}
   #askAiModal .ask-ai-tools button{flex:0 0 40px;width:40px;height:40px}
   #askAiModal .ask-ai-tools .ask-ai-close{font-size:26px}
 }
+
+/* Keep the Ask AI controls above the backdrop in every browser. */
+.ask-ai-backdrop { z-index: 0; }
+.ask-ai-dialog { z-index: 1; pointer-events: auto; }
+.ask-ai-header, .ask-ai-tools { position: relative; z-index: 2; }
+.ask-ai-close { position: relative; z-index: 3; pointer-events: auto; cursor: pointer; }

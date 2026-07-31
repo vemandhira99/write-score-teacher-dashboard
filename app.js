@@ -552,6 +552,12 @@ $('#askAiButton')?.addEventListener('click', () => setAskAiOpen(true));
 document.addEventListener('click', (event) => {
   if (event.target.closest('[data-close-ai]')) setAskAiOpen(false);
 });
-document.addEventListener('keydown', (event) => {
+document.addEventListener('pointerdown', (event) => {
+  if (event.target.closest('[data-close-ai]')) {
+    event.preventDefault();
+    event.stopPropagation();
+    setAskAiOpen(false);
+  }
+}, true);document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') setAskAiOpen(false);
 });

@@ -115,7 +115,7 @@
           <button type="button" aria-label="History">&#8635;</button>
           <button type="button" aria-label="Download">&#8681;</button>
           <button type="button" aria-label="New conversation">+</button>
-          <button class="ask-ai-close" type="button" aria-label="Close Ask AI" data-close-ai onclick="document.getElementById('askAiModal').hidden=true;document.body.classList.remove('modal-open');">&times;</button>
+          <button class="ask-ai-close" type="button" aria-label="Close Ask AI" data-close-ai onclick="const modal=document.getElementById('askAiModal');modal.setAttribute('hidden','');modal.setAttribute('aria-hidden','true');document.body.classList.remove('modal-open');return false;">&times;</button>
         </div>
       </header>
       <div class="ask-ai-context"><strong>Context: Current dashboard</strong><span>student_skill_scores</span><span>domain_scores</span><span>student_scores</span><button class="edit-datasets" type="button">Edit datasets</button></div>
@@ -148,6 +148,6 @@
     </section>
   </div>  <div class="skill-tooltip" id="skillTooltip" role="status" aria-live="polite" hidden></div>
   <div class="toast" id="toast" role="status"></div>
-  <script src="app.js?v=20260731-close-v2"></script>
+  <script src="app.js?v=20260731-close-v3"></script>
 </body>
 </html>
