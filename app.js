@@ -542,8 +542,13 @@ Promise.all([
 function setAskAiOpen(open) {
   const modal = $('#askAiModal');
   if (!modal) return;
-  modal.toggleAttribute('hidden', !open);
-  modal.setAttribute('aria-hidden', String(!open));
+  if (open) {
+    modal.removeAttribute('hidden');
+    modal.setAttribute('aria-hidden', 'false');
+  } else {
+    modal.setAttribute('hidden', '');
+    modal.setAttribute('aria-hidden', 'true');
+  }
   document.body.classList.toggle('modal-open', open);
   if (open) $('.ask-ai-input input')?.focus();
 }
@@ -552,12 +557,7 @@ $('#askAiButton')?.addEventListener('click', () => setAskAiOpen(true));
 document.addEventListener('click', (event) => {
   if (event.target.closest('[data-close-ai]')) setAskAiOpen(false);
 });
-document.addEventListener('pointerdown', (event) => {
-  if (event.target.closest('[data-close-ai]')) {
-    event.preventDefault();
-    event.stopPropagation();
-    setAskAiOpen(false);
-  }
-}, true);document.addEventListener('keydown', (event) => {
+document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') setAskAiOpen(false);
 });
+
