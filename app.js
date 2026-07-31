@@ -538,3 +538,17 @@ Promise.all([
 }).catch(() => {
   document.body.innerHTML = '<p style="padding:30px;font:18px Arial">Unable to load the demo data. Open this folder through a local web server.</p>';
 });
+
+function setAskAiOpen(open) {
+  const modal = $('#askAiModal');
+  if (!modal) return;
+  modal.hidden = !open;
+  document.body.classList.toggle('modal-open', open);
+  if (open) $('.ask-ai-input input')?.focus();
+}
+
+$('#askAiButton')?.addEventListener('click', () => setAskAiOpen(true));
+$$('[data-close-ai]').forEach((button) => button.addEventListener('click', () => setAskAiOpen(false)));
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') setAskAiOpen(false);
+});

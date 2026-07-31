@@ -9,13 +9,14 @@
 </head>
 <body>
   <main id="top">
+
     <section class="filter-band" aria-label="Dashboard filters">
       <div class="filter-inner">
         <div class="filter-heading" aria-hidden="true"><span class="filter-icon">&#9881;</span></div>
         <label class="filter-control"><strong>GRADE</strong><select id="gradeFilter"></select></label>
         <label class="filter-control"><strong>Section</strong><select id="sectionFilter"></select></label>
         <label class="filter-control student-select"><strong>Student Name</strong><select id="studentFilter"></select></label>
-        <button class="reset-button" id="resetButton" type="button">Clear all</button>
+        <div class="filter-actions"><button class="ask-ai-button" id="askAiButton" type="button">Ask AI</button><button class="reset-button" id="resetButton" type="button">Clear all</button></div>
       </div>
     </section>
 
@@ -103,7 +104,49 @@
       </article>
     </section>
   </main>
-  <div class="skill-tooltip" id="skillTooltip" role="status" aria-live="polite" hidden></div>
+  <div class="ask-ai-modal" id="askAiModal" role="dialog" aria-modal="true" aria-labelledby="askAiTitle" hidden>
+    <div class="ask-ai-backdrop" data-close-ai></div>
+    <section class="ask-ai-dialog">
+      <header class="ask-ai-header">
+        <div><span class="ai-mark">AI</span><h2 id="askAiTitle">Ask Akashic BI</h2><p>Ask about this dashboard or create a chart from a prompt.</p></div>
+        <div class="ask-ai-tools" aria-label="Ask AI tools">
+          <button type="button" aria-label="Share">&#128279;</button>
+          <button type="button" aria-label="Datasets">&#9638;</button>
+          <button type="button" aria-label="History">&#8635;</button>
+          <button type="button" aria-label="Download">&#8681;</button>
+          <button type="button" aria-label="New conversation">+</button>
+          <button class="ask-ai-close" type="button" aria-label="Close Ask AI" data-close-ai>&times;</button>
+        </div>
+      </header>
+      <div class="ask-ai-context"><strong>Context: Current dashboard</strong><span>student_skill_scores</span><span>domain_scores</span><span>student_scores</span><button class="edit-datasets" type="button">Edit datasets</button></div>
+      <div class="ask-ai-body">
+        <p class="ai-intro"><span class="ai-mark">AI</span>I am Ask BI. I can explain this dashboard, answer guarded data questions, or build a chart from a prompt.</p>
+        <div class="ai-prompt">Using the dashboard data, do a detailed analysis and summarize what I can do to improve individual students performance.</div>
+        <article class="ai-answer">
+          <h3>Improving Individual Student Performance in Jasmine Ramey's Classroom</h3>
+          <h4>What the data shows</h4>
+          <p>Of the 19 students with submitted work, 17 meet or exceed proficiency (raw score 5-8), while 2 students score in the developing range (4) and none show no evidence of learning.</p>
+          <h4>Insights and implications</h4>
+          <ul>
+            <li>Capitalization and spelling deficiencies are systemic mechanics issues affecting the class broadly. Use daily whole-class mini-lessons and peer-review routines rather than relying only on one-to-one intervention.</li>
+            <li>Progression weakness reflects a need for stronger modeling of organizational structures and transitions. Students need support sequencing and connecting ideas logically.</li>
+            <li>Tolbert, Chase and Patel, Avery need scaffolded multi-domain support in organization and language conventions, including sentence-building and outlining practice before full essays.</li>
+            <li>The majority of the class meets or exceeds proficiency, so focused intervention for the two developing students and whole-class mechanics practice can move more students to Advanced performance.</li>
+          </ul>
+          <h4>Recommended actions</h4>
+          <ul>
+            <li><strong>High:</strong> Run 5-minute daily capitalization and spelling mini-lessons using recent student writing samples, followed by peer-editing checklists.</li>
+            <li><strong>High:</strong> Teach explicit organization scaffolds: graphic organizers, transition sentence stems, shared writing, then independent practice.</li>
+            <li><strong>High:</strong> Give Tolbert, Chase and Patel, Avery guided sentence-combining, outlining, and small-group drafting check-ins.</li>
+            <li><strong>Medium:</strong> Use strong performers as peer models during writing conferences to share organization and mechanics habits.</li>
+          </ul>
+          <h4>Data limitations</h4>
+          <p>Skill ratings are sub-skill observations. A student can have multiple ratings across domains, so they do not represent separate students. This analysis covers one assessment and should be validated with additional evidence over time.</p>
+        </article>
+      </div>
+      <footer class="ask-ai-input"><input aria-label="Ask a question about this dashboard" placeholder="Ask anything about this dashboard..."><button type="button" aria-label="Send question">&#8593;</button></footer>
+    </section>
+  </div>  <div class="skill-tooltip" id="skillTooltip" role="status" aria-live="polite" hidden></div>
   <div class="toast" id="toast" role="status"></div>
   <script src="app.js"></script>
 </body>
