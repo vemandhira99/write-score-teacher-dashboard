@@ -17,24 +17,24 @@ let data = { scores: [], skills: [] };
 let sort = { key: 'raw_score', dir: -1 };
 
 const ratingColors = {
-  Strong: '#37a56b',
-  Sufficient: '#61bd84',
-  Partial: '#f6b91f',
-  Weak: '#ff8247',
-  Insufficient: '#d84257',
-  Missing: '#9aa9ba',
+  Missing: '#42b4d6',
+  Insufficient: '#3d4470',
+  Weak: '#55c48b',
+  Strong: '#ff7647',
+  Partial: '#5c6068',
+  Sufficient: '#d93b4d',
 };
 
 const barColors = {
-  0: '#d84257',
-  1: '#d84257',
-  2: '#f6b91f',
-  3: '#f6b91f',
-  4: '#40547e',
-  5: '#59c68b',
-  6: '#ff8247',
-  7: '#6a6a6a',
-  8: '#d84257',
+  0: '#d93b4d',
+  1: '#d93b4d',
+  2: '#55c48b',
+  3: '#55c48b',
+  4: '#646698',
+  5: '#55c48b',
+  6: '#ff7647',
+  7: '#696969',
+  8: '#d93b4d',
 };
 
 function csv(text) {
@@ -135,9 +135,9 @@ function setFilters() {
 }
 
 function updateClearButtons() {
-  $('#clearRawScore').hidden = state.raw === null;
-  $('#clearDomain').hidden = !state.domain;
-  $('#clearSkill').hidden = !state.skill;
+  if ($('#clearRawScore')) $('#clearRawScore').hidden = state.raw === null;
+  if ($('#clearDomain')) $('#clearDomain').hidden = !state.domain;
+  if ($('#clearSkill')) $('#clearSkill').hidden = !state.skill;
 }
 
 function renderHeader() {
@@ -146,12 +146,12 @@ function renderHeader() {
   const enrolled = context.length;
   const scored = context.filter(submitted).length;
 
-  $('#schoolEyebrow').textContent = ((first.school_name || 'Write Score') + ' | WRITING ASSESSMENT').toUpperCase();
-  $('#assessmentTitle').textContent = state.assessment || 'All Assessments';
-  $('#assessmentMeta').textContent = (first.season || '') + ' | ' + (first.writing_type || 'Writing Rubric') + ' (0-8)';
-  $('#classSummary').innerHTML = '<strong>Class Summary:</strong> ' + enrolled + ' students enrolled | ' + scored + ' scored submissions';
-  $('#teacherName').textContent = state.teacher || 'All Teachers';
-  $('#className').textContent = 'Grade ' + (state.grade || 'All') + ' | Section ' + (state.section || 'All');
+  $('#schoolEyebrow').textContent = ((first.school_name || 'BEECHER HILLS ELEMENTARY') + ' · WRITING ASSESSMENT').toUpperCase();
+  $('#assessmentTitle').textContent = state.assessment || 'Mar-9 GA Extended Writing Task - Athletic Ability';
+  $('#assessmentMeta').textContent = (first.season || 'Spring 2026') + ' · ' + (first.writing_type || 'GA Extended Writing Rubric') + ' (0–8)';
+  $('#classSummary').innerHTML = '<strong>Class Summary:</strong> ' + enrolled + ' students enrolled · ' + scored + ' scored submissions';
+  $('#teacherName').textContent = state.teacher || 'Jasmine Ramey';
+  $('#className').textContent = 'Grade ' + (state.grade || '4') + ' · Section ' + (state.section || 'A');
 }
 
 function renderKpis() {
@@ -161,15 +161,15 @@ function renderKpis() {
   )).length;
 
   const cards = [
-    ['Students Scored', scores.length, 'Submitted responses'],
-    ['Advanced + Proficient', count(5, 8), 'Scores 5-8'],
-    ['Developing', count(3, 4), 'Scores 3-4'],
-    ['Beginning', count(1, 2), 'Scores 1-2'],
-    ['No Evidence', count(0, 0), 'Raw score 0'],
+    ['Students Scored', scores.length],
+    ['Advanced + Proficient', count(5, 8)],
+    ['Developing', count(3, 4)],
+    ['Beginning', count(1, 2)],
+    ['No Evidence', count(0, 0)],
   ];
 
-  $('#kpiGrid').innerHTML = cards.map(([label, value, note]) => (
-    '<article class="kpi"><p class="kpi-label">' + label + '</p><div class="kpi-value">' + value + '</div><p class="kpi-note">' + note + '</p></article>'
+  $('#kpiGrid').innerHTML = cards.map(([label, value]) => (
+    '<article class="kpi"><p class="kpi-label">' + label + '</p><div class="kpi-value">' + value + '</div></article>'
   )).join('');
 }
 
@@ -184,7 +184,7 @@ function renderRaw() {
       + 'title="Raw score ' + rawScore + ': ' + count + ' student' + (count === 1 ? '' : 's') + '" '
       + 'aria-label="Raw score ' + rawScore + ': ' + count + ' student' + (count === 1 ? '' : 's') + '">'
       + '<span class="bar-count">' + count + '</span>'
-      + '<span class="bar-fill" style="height:' + Math.max(5, (count / maximum) * 245) + 'px;background:' + barColors[rawScore] + '"></span>'
+      + '<span class="bar-fill" style="height:' + Math.max(5, (count / maximum) * 190) + 'px;background:' + (barColors[rawScore] || '#55c48b') + '"></span>'
       + '<span class="bar-score">' + rawScore + '</span>'
       + '</button>'
   )).join('') : '<p class="chart-empty">No scored students match these filters.</p>';
@@ -203,22 +203,30 @@ function renderRaw() {
 function renderDomains() {
   const scores = activeScores();
   const domains = [
-    ['Purpose & Organization', 'purpose', 3, 'orange'],
-    ['Evidence & Elaboration', 'evidence', 3, 'green'],
-    ['Language Usage & Conventions', 'language', 2, 'navy'],
+    ['Purpose & Organization', 'purpose', 3, '#ff7647'],
+    ['Evidence & Elaboration', 'evidence', 3, '#55c48b'],
+    ['Language Usage & Conventions', 'language', 2, '#3f4a76'],
   ];
 
-  $('#domainChart').innerHTML = domains.map(([name, key, maximum, color]) => {
-    const value = average(scores.map((score) => Number(score[key])));
-    return '<button class="domain-row ' + (state.domain === name ? 'active' : '') + '" data-domain="' + escaped(name) + '" '
-      + 'title="Focus skill detail on ' + escaped(name) + '">'
-      + '<span class="domain-name">' + name + '</span>'
-      + '<span class="domain-track"><span class="domain-fill domain-' + color + '" style="width:' + ((value / maximum) * 100) + '%"></span></span>'
-      + '<strong class="domain-value">' + value.toFixed(2) + ' / ' + maximum + '</strong>'
-      + '</button>';
-  }).join('');
+  $('#domainChart').innerHTML = (
+    '<div class="superset-domain-chart">'
+    + '<div class="domain-bars">'
+    + domains.map(([name, key, maximum, color]) => {
+      const value = average(scores.map((score) => Number(score[key])));
+      const percentage = (value / 2.00) * 100;
+      return '<button class="superset-domain-row ' + (state.domain === name ? 'active' : '') + '" data-domain="' + escaped(name) + '" '
+        + 'title="Focus skill detail on ' + escaped(name) + '">'
+        + '<span class="superset-domain-label">' + name + '</span>'
+        + '<div class="superset-domain-track"><div class="superset-domain-bar" style="width:' + Math.min(100, percentage) + '%;background:' + color + '"></div><span class="superset-domain-val">' + value.toFixed(2) + '</span></div>'
+        + '</button>';
+    }).join('')
+    + '</div>'
+    + '<div class="x-ticks-line"><span>0.00</span><span>0.50</span><span>1.00</span><span>1.50</span><span>2.00</span></div>'
+    + '<p class="x-axis-title">Average Points Earned (P&O / E&E: 3 max; LU&C: 2 max)</p>'
+    + '</div>'
+  );
 
-  $$('.domain-row').forEach((row) => {
+  $$('.superset-domain-row').forEach((row) => {
     row.onclick = () => {
       const domain = row.dataset.domain;
       state.raw = null;
@@ -231,9 +239,27 @@ function renderDomains() {
   });
 
   const rawAverage = average(scores.map((score) => Number(score.raw_score)));
-  $('#classAverageChart').innerHTML = '<div class="average-number">' + rawAverage.toFixed(2) + ' <small>/ 8</small></div>'
-    + '<div class="average-track"><div class="average-fill" style="width:' + ((rawAverage / 8) * 100) + '%"></div></div>'
-    + '<p class="average-caption">Average raw score for the students currently shown.</p>';
+  const percentage = (rawAverage / 8) * 100;
+  const sectionLabel = state.section ? state.section : 'A';
+
+  $('#classAverageChart').innerHTML = (
+    '<div class="superset-h-chart">'
+    + '<div class="chart-y-axis-label">' + sectionLabel + '</div>'
+    + '<div class="chart-body">'
+    + '<div class="grid-v-line" style="left:0%"></div>'
+    + '<div class="grid-v-line" style="left:25%"></div>'
+    + '<div class="grid-v-line" style="left:50%"></div>'
+    + '<div class="grid-v-line" style="left:75%"></div>'
+    + '<div class="grid-v-line" style="left:100%"></div>'
+    + '<div class="bar-wrapper">'
+    + '<div class="bar-fill-navy" style="width:' + percentage + '%"></div>'
+    + '<span class="bar-val-text">' + rawAverage.toFixed(2) + '</span>'
+    + '</div>'
+    + '</div>'
+    + '<div class="x-ticks"><span>0</span><span>2</span><span>4</span><span>6</span><span>8</span></div>'
+    + '<p class="x-axis-title">Average Raw Score</p>'
+    + '</div>'
+  );
 }
 
 function renderResources() {
@@ -258,11 +284,11 @@ function renderResources() {
       key: 'language',
       maximum: 2,
       label: 'Priority gap',
-      links: ['Capitalization and Punctuation: Daily Editing Practice', 'Sentence Formation: Build Clear Complete Sentences'],
+      links: ['Capitalization and Punctuation: Daily Editing Practice'],
     },
   ];
 
-  $('#resourceIntro').textContent = 'Targeted practice connected to current domain results.';
+  if ($('#resourceIntro')) $('#resourceIntro').textContent = '';
   $('#resourceList').innerHTML = groups.map((group) => {
     const value = average(scores.map((score) => Number(score[group.key])));
     return '<section class="resource-group"><h3>' + group.name + '</h3>'
@@ -279,28 +305,32 @@ function availableSkills({ applyRaw = false } = {}) {
 
 function renderSkills() {
   const skills = availableSkills();
-  const ratings = ['Strong', 'Sufficient', 'Partial', 'Weak', 'Insufficient', 'Missing'];
-  const domainOrder = ['Purpose & Organization', 'Evidence & Elaboration', 'Language Usage & Conventions'];
+  const ratings = ['Missing', 'Insufficient', 'Weak', 'Strong', 'Partial', 'Sufficient'];
+  const domainOrder = ['Purpose & Organization', 'Language Usage & Conventions', 'Evidence & Elaboration'];
   const shownDomains = state.domain ? domainOrder.filter((domain) => domain === state.domain) : domainOrder;
 
-  $('#skillLegend').innerHTML = ratings.map((rating) => (
-    '<span class="legend-item"><i class="legend-swatch" style="background:' + ratingColors[rating] + '"></i>' + rating + '</span>'
-  )).join('');
+  $('#skillLegend').innerHTML = (
+    '<div class="legend-swatches">'
+    + ratings.map((rating) => (
+      '<span class="legend-item"><i class="legend-swatch" style="background:' + ratingColors[rating] + '"></i>' + rating + '</span>'
+    )).join('')
+    + '<button class="legend-btn" type="button">All</button><button class="legend-btn" type="button">Inv</button>'
+    + '</div>'
+  );
 
   let markup = '';
   shownDomains.forEach((domain) => {
-    markup += '<div class="skill-group-title">' + domain + '</div>';
     unique(skills.filter((skill) => skill.domain === domain).map((skill) => skill.skill)).forEach((skillName) => {
       const rows = skills.filter((skill) => skill.domain === domain && skill.skill === skillName);
       const total = rows.length || 1;
+      const fullLabel = domain + ' - ' + skillName;
       markup += '<button class="skill-row ' + (state.skill === skillName ? 'active' : '') + '" data-domain="' + escaped(domain) + '" data-skill="' + escaped(skillName) + '" '
-        + 'aria-label="Focus skill detail on ' + escaped(skillName) + '">'
-        + '<span class="skill-name">' + skillName + '</span>'
+        + 'aria-label="Focus skill detail on ' + escaped(fullLabel) + '">'
+        + '<span class="skill-name">' + fullLabel + '</span>'
         + '<span class="skill-stack">' + ratings.map((rating) => {
           const count = rows.filter((skill) => skill.rating === rating).length;
           return count ? '<span class="skill-segment" style="width:' + ((count / total) * 100) + '%;background:' + ratingColors[rating] + '"></span>' : '';
         }).join('') + '</span>'
-        + '<span class="skill-total">' + rows.length + '</span>'
         + '</button>';
     });
   });
@@ -333,7 +363,7 @@ function renderSkills() {
 }
 
 function rosterRows() {
-  const term = ($('#tableSearch').value || '').trim().toLowerCase();
+  const term = ($('#tableSearch') ? $('#tableSearch').value || '' : '').trim().toLowerCase();
   return activeScores({ applyRaw: true }).filter((score) => score.student_name.toLowerCase().includes(term));
 }
 
@@ -342,31 +372,28 @@ function renderRoster() {
     String(left[sort.key]).localeCompare(String(right[sort.key]), undefined, { numeric: true }) * sort.dir
   ));
   const columns = [
-    ['student_name', 'Student'],
-    ['grade', 'Grade'],
-    ['section', 'Section'],
-    ['student_group', 'Student Group'],
-    ['purpose', 'P&O'],
-    ['evidence', 'E&E'],
-    ['language', 'LU&C'],
+    ['student_name', 'Student Name'],
+    ['purpose', 'Purpose'],
+    ['evidence', 'Evidence'],
+    ['language', 'Language'],
     ['raw_score', 'Raw Score'],
     ['band', 'Band'],
   ];
 
-  $('#rosterCount').textContent = rows.length + ' student record' + (rows.length === 1 ? '' : 's') + ' shown';
   $('#rosterTable thead').innerHTML = '<tr>' + columns.map(([key, label]) => (
-    '<th data-key="' + key + '">' + label + ' ' + (sort.key === key ? (sort.dir === 1 ? '&#8593;' : '&#8595;') : '') + '</th>'
+    '<th data-key="' + key + '">' + label + ' &#x2195;</th>'
   )).join('') + '</tr>';
 
   $('#rosterTable tbody').innerHTML = rows.length ? rows.map((score) => (
-    '<tr data-id="' + score.student_score_id + '">'
+    '<tr>'
       + columns.map(([key]) => {
-        if (key === 'raw_score') return '<td class="raw-cell" style="--score-width:' + ((Number(score[key]) / 8) * 100) + '%"><span>' + escaped(score[key]) + '</span></td>';
-        if (key === 'band') return '<td><span class="band-pill">' + escaped(score[key]) + '</span></td>';
+        if (key === 'raw_score' || key === 'band') {
+          return '<td class="score-highlight">' + escaped(score[key]) + '</td>';
+        }
         return '<td>' + escaped(score[key]) + '</td>';
       }).join('')
       + '</tr>'
-  )).join('') : '<tr><td class="empty-row" colspan="9">No students match these filters.</td></tr>';
+  )).join('') : '<tr><td class="empty-row" colspan="6">No students match these filters.</td></tr>';
 
   $$('#rosterTable th').forEach((header) => {
     header.onclick = () => {
@@ -383,7 +410,7 @@ function renderRoster() {
 }
 
 function renderSkillDetail() {
-  const term = ($('#skillSearch').value || '').trim().toLowerCase();
+  const term = ($('#skillSearch') ? $('#skillSearch').value || '' : '').trim().toLowerCase();
   let rows = availableSkills();
 
   if (state.domain) rows = rows.filter((skill) => skill.domain === state.domain);
@@ -393,11 +420,18 @@ function renderSkillDetail() {
       .some((value) => String(value).toLowerCase().includes(term))
   ));
 
-  const focus = state.skill || state.domain;
-  $('#skillDetailCount').textContent = rows.length + ' skill rating' + (rows.length === 1 ? '' : 's') + ' shown' + (focus ? ' | ' + focus : '');
+  $('#skillDetailTable thead').innerHTML = '<tr>'
+    + '<th>Student Name &#x2195;</th>'
+    + '<th>Domain &#x2195;</th>'
+    + '<th>Skill &#x2195;</th>'
+    + '<th>Rating &#x2195;</th>'
+    + '<th>Grade &#x2195;</th>'
+    + '<th>Section &#x2195;</th>'
+    + '</tr>';
+
   $('#skillDetailTable tbody').innerHTML = rows.length ? rows.map((skill) => (
     '<tr><td>' + escaped(skill.student_name) + '</td><td>' + escaped(skill.domain) + '</td><td>' + escaped(skill.skill) + '</td>'
-      + '<td><span class="skill-rating">' + escaped(skill.rating) + '</span></td><td>' + escaped(skill.grade) + '</td><td>' + escaped(skill.section) + '</td></tr>'
+      + '<td>' + escaped(skill.rating) + '</td><td>' + escaped(skill.grade) + '</td><td>' + escaped(skill.section) + '</td></tr>'
   )).join('') : '<tr><td class="empty-row" colspan="6">No skill ratings found.</td></tr>';
 }
 
@@ -548,7 +582,7 @@ function setAskAiOpen(open) {
     modal.setAttribute('aria-hidden', 'true');
   }
   document.body.classList.toggle('modal-open', open);
-  if (open) $('.ask-ai-input input')?.focus();
+  if (open) ($('.ask-input-box input') || $('.ask-ai-footer input'))?.focus();
 }
 
 $('#askAiButton')?.addEventListener('click', () => setAskAiOpen(true));

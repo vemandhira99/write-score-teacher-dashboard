@@ -86,7 +86,10 @@
 
       <section class="section-title"><span>Student Detail</span><small>Sort or search student records.</small></section>
       <article class="panel roster-panel">
-        <div class="roster-toolbar"><div><h2>Student Roster</h2><p id="rosterCount"></p></div><input id="tableSearch" type="search" placeholder="Search this roster"></div>
+        <div class="roster-toolbar">
+          <div><h2>Student Roster</h2></div>
+          <div class="search-box"><label for="tableSearch">Search</label><input id="tableSearch" type="search"></div>
+        </div>
         <div class="table-wrap"><table id="rosterTable"><thead></thead><tbody></tbody></table></div>
       </article>
       <article class="panel detail-panel" id="detailPanel" hidden>
@@ -94,10 +97,13 @@
         <div id="studentDetail" class="rubric-detail"></div>
       </article>
       <article class="panel skill-detail-panel">
-        <div class="roster-toolbar"><div><h2>Student Skill Detail</h2><p id="skillDetailCount"></p></div><input id="skillSearch" type="search" placeholder="Search student skills"></div>
+        <div class="roster-toolbar">
+          <div><h2>Student Skill Detail</h2></div>
+          <div class="search-box"><label for="skillSearch">Search</label><input id="skillSearch" type="search"></div>
+        </div>
         <div class="table-wrap skill-detail-wrap">
           <table id="skillDetailTable">
-            <thead><tr><th>Student Name</th><th>Domain</th><th>Skill</th><th>Rating</th><th>Grade</th><th>Section</th></tr></thead>
+            <thead></thead>
             <tbody></tbody>
           </table>
         </div>
@@ -118,33 +124,49 @@
           <button class="ask-ai-close" type="button" aria-label="Close Ask AI" data-close-ai>&times;</button>
         </div>
       </header>
-      <div class="ask-ai-context"><strong>Context: Current dashboard</strong><span>student_skill_scores</span><span>domain_scores</span><span>student_scores</span><button class="edit-datasets" type="button">Edit datasets</button></div>
+      <div class="ask-ai-context">
+        <strong>Context: Current dashboard</strong>
+        <span class="context-tag">student_skill_scores <i class="tag-close">&times;</i></span>
+        <span class="context-tag">domain_scores <i class="tag-close">&times;</i></span>
+        <span class="context-tag">student_scores <i class="tag-close">&times;</i></span>
+        <button class="edit-datasets" type="button">&#9638; Edit datasets</button>
+      </div>
       <div class="ask-ai-body">
-        <p class="ai-intro"><span class="ai-mark">AI</span>I am Ask BI. I can explain this dashboard, answer guarded data questions, or build a chart from a prompt.</p>
+        <p class="ai-intro"><span class="ai-mark">AI</span>Hi, I am Ask BI. I can explain this dashboard, answer guarded data questions, or build a chart from a prompt.</p>
         <div class="ai-prompt">Using the dashboard data, do a detailed analysis and summarize what I can do to improve individual students performance.</div>
         <article class="ai-answer">
           <h3>Improving Individual Student Performance in Jasmine Ramey's Classroom</h3>
           <h4>What the data shows</h4>
-          <p>Of the 19 students with submitted work, 17 meet or exceed proficiency (raw score 5-8), while 2 students score in the developing range (4) and none show no evidence of learning.</p>
+          <p>Of the 19 students with submitted work, 17 meet or exceed proficiency (raw score 5–8), while 2 students score in the developing range (4) and none show no evidence of learning.</p>
           <h4>Insights and implications</h4>
           <ul>
-            <li>Capitalization and spelling deficiencies are systemic mechanics issues affecting the class broadly. Use daily whole-class mini-lessons and peer-review routines rather than relying only on one-to-one intervention.</li>
-            <li>Progression weakness reflects a need for stronger modeling of organizational structures and transitions. Students need support sequencing and connecting ideas logically.</li>
-            <li>Tolbert, Chase and Patel, Avery need scaffolded multi-domain support in organization and language conventions, including sentence-building and outlining practice before full essays.</li>
-            <li>The majority of the class meets or exceeds proficiency, so focused intervention for the two developing students and whole-class mechanics practice can move more students to Advanced performance.</li>
+            <li>Capitalization and Spelling deficiencies are systemic mechanics issues affecting the class broadly, not isolated to one or two students. These require daily, whole-class mini-lessons and peer review routines rather than one-on-one intervention. <a href="#" class="source-link">(source)</a></li>
+            <li>Progression weakness (6 Weak ratings) reflects insufficient modeling of organizational structures and transitions. Students understand individual ideas but struggle to sequence and connect them logically—a teaching strategy gap, not a student capability gap. <a href="#" class="source-link">(source)</a></li>
+            <li>Tolbert, Chase and Patel, Avery require scaffolded, multi-domain support. Both show weakness in Purpose &amp; Organization (Progression, Transitions) and Language conventions (Capitalization, Spelling), suggesting they need foundational sentence-building and outlining practice before tackling full essays. <a href="#" class="source-link">(source)</a></li>
+            <li>The majority of the class (17 of 19 students) meets or exceeds proficiency, indicating strong overall instruction. Targeted interventions for the two developing students and class-wide mechanics practice will move most students to Advanced performance. <a href="#" class="source-link">(source)</a></li>
           </ul>
           <h4>Recommended actions</h4>
           <ul>
-            <li><strong>High:</strong> Run 5-minute daily capitalization and spelling mini-lessons using recent student writing samples, followed by peer-editing checklists.</li>
-            <li><strong>High:</strong> Teach explicit organization scaffolds: graphic organizers, transition sentence stems, shared writing, then independent practice.</li>
-            <li><strong>High:</strong> Give Tolbert, Chase and Patel, Avery guided sentence-combining, outlining, and small-group drafting check-ins.</li>
-            <li><strong>Medium:</strong> Use strong performers as peer models during writing conferences to share organization and mechanics habits.</li>
+            <li><strong>High:</strong> Implement 5-minute daily capitalization and spelling mini-lessons using student writing samples. Focus on rules (proper nouns, sentence starts) and common misspellings from recent submissions. Pair with peer-editing checklists so students self-correct before submission. <a href="#" class="source-link">(source)</a></li>
+            <li><strong>High:</strong> Teach explicit organizational scaffolds: graphic organizers for Progression (beginning–middle–end or claim–evidence–analysis), sentence stems for Transitions ('First, I will explain…' 'This shows that…'). Model with shared writing before independent practice. <a href="#" class="source-link">(source)</a></li>
+            <li><strong>High:</strong> For Tolbert, Chase and Patel, Avery: Begin with sentence-combining and outlining exercises before full essays. Use guided practice with sentence frames and pre-written topic sentences. Provide one-on-one or small-group check-ins during drafting to catch capitalization and spelling errors early. <a href="#" class="source-link">(source)</a></li>
+            <li><strong>Medium:</strong> Celebrate and reinforce strong performers (Martinez, Nasir; Flores, Olivia; Gibson, Jaxon; Ellison, Riley) as peer models. Have them share their organizational strategies and mechanics habits with the class during writing conferences. <a href="#" class="source-link">(source)</a></li>
           </ul>
           <h4>Data limitations</h4>
-          <p>Skill ratings are sub-skill observations. A student can have multiple ratings across domains, so they do not represent separate students. This analysis covers one assessment and should be validated with additional evidence over time.</p>
+          <p>Skill ratings reflect observations at the sub-skill level, not individual student counts. A student may have multiple ratings across domains; the data does not isolate which specific students drive each gap, only that the gap exists across the cohort.</p>
+          <p>The analysis covers one assessment (Mar-9 GA Extended Writing Task - Athletic Ability). Trends and patterns may differ across other writing types or assessments; recommendations should be validated with additional evidence over time.</p>
+          <p class="data-omitted-note">Some proposed interpretation was omitted because it could not be linked to the retrieved evidence</p>
         </article>
       </div>
-      <footer class="ask-ai-input"><input aria-label="Ask a question about this dashboard" placeholder="Ask anything about this dashboard..."><button type="button" aria-label="Send question">&#8593;</button></footer>
+      <footer class="ask-ai-footer">
+        <div class="ask-input-box">
+          <input aria-label="Ask a question about this dashboard" placeholder="Ask anything about this dashboard...">
+          <div class="input-bottom-bar">
+            <span class="input-hint">Enter to send · Shift+Enter new line · @ pins a dataset</span>
+            <button type="button" class="send-btn" aria-label="Send question">&#8593;</button>
+          </div>
+        </div>
+      </footer>
     </section>
   </div>  <div class="skill-tooltip" id="skillTooltip" role="status" aria-live="polite" hidden></div>
   <div class="toast" id="toast" role="status"></div>
