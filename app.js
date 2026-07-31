@@ -294,11 +294,11 @@ function renderSkills() {
       const rows = skills.filter((skill) => skill.domain === domain && skill.skill === skillName);
       const total = rows.length || 1;
       markup += '<button class="skill-row ' + (state.skill === skillName ? 'active' : '') + '" data-domain="' + escaped(domain) + '" data-skill="' + escaped(skillName) + '" '
-        + 'title="Focus skill detail on ' + escaped(skillName) + '">'
+        + 'aria-label="Focus skill detail on ' + escaped(skillName) + '">'
         + '<span class="skill-name">' + skillName + '</span>'
         + '<span class="skill-stack">' + ratings.map((rating) => {
           const count = rows.filter((skill) => skill.rating === rating).length;
-          return count ? '<span class="skill-segment" title="' + rating + ': ' + count + '" style="width:' + ((count / total) * 100) + '%;background:' + ratingColors[rating] + '"></span>' : '';
+          return count ? '<span class="skill-segment" style="width:' + ((count / total) * 100) + '%;background:' + ratingColors[rating] + '"></span>' : '';
         }).join('') + '</span>'
         + '<span class="skill-total">' + rows.length + '</span>'
         + '</button>';
@@ -448,12 +448,14 @@ function showSkillTooltip(event, domain, skillName, rows) {
   const ratings = ['Strong', 'Sufficient', 'Partial', 'Weak', 'Insufficient', 'Missing'];
   const total = rows.length;
   const tooltip = $('#skillTooltip');
-  tooltip.innerHTML = '<strong>' + escaped(domain) + ' - ' + escaped(skillName) + '</strong>'
-    + ratings.map((rating) => {
+  tooltip.innerHTML = '<div class="tooltip-header"><strong>' + escaped(domain) + ' - ' + escaped(skillName) + '</strong><span class="tooltip-subtext">Rating counts for this skill</span></div>'
+    + '<div class="tooltip-body">' + ratings.map((rating) => {
       const count = rows.filter((row) => row.rating === rating).length;
-      return '<span class="tooltip-rating"><i style="background:' + ratingColors[rating] + '"></i><b>' + rating + '</b><em>' + count + '</em></span>';
-    }).join('')
-    + '<span class="tooltip-total"><b>Total</b><em>' + total + '</em></span>';
+      return '<div class="tooltip-row"><span class="tooltip-dot" style="background:' + ratingColors[rating] + '"></span>'
+        + '<span class="tooltip-label">' + rating + '</span>'
+        + '<span class="tooltip-value">' + count + '</span></div>';
+    }).join('') + '</div>'
+    + '<div class="tooltip-total"><span>Total</span><span>' + total + '</span></div>';
   tooltip.hidden = false;
   positionSkillTooltip(event);
 }
