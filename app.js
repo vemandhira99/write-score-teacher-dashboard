@@ -542,13 +542,16 @@ Promise.all([
 function setAskAiOpen(open) {
   const modal = $('#askAiModal');
   if (!modal) return;
-  modal.hidden = !open;
+  modal.toggleAttribute('hidden', !open);
+  modal.setAttribute('aria-hidden', String(!open));
   document.body.classList.toggle('modal-open', open);
   if (open) $('.ask-ai-input input')?.focus();
 }
 
 $('#askAiButton')?.addEventListener('click', () => setAskAiOpen(true));
-$$('[data-close-ai]').forEach((button) => button.addEventListener('click', () => setAskAiOpen(false)));
+document.addEventListener('click', (event) => {
+  if (event.target.closest('[data-close-ai]')) setAskAiOpen(false);
+});
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') setAskAiOpen(false);
 });
