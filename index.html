@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Interactive Write Score teacher dashboard demo">
+  <title>Write Score | Teacher Dashboard</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main id="top">
+    <section class="filter-band" aria-label="Dashboard filters">
+      <div class="filter-inner">
+        <div class="filter-heading" aria-hidden="true"><span class="filter-icon">&#9881;</span></div>
+        <label class="filter-control"><strong>GRADE</strong><select id="gradeFilter"></select></label>
+        <label class="filter-control"><strong>Section</strong><select id="sectionFilter"></select></label>
+        <label class="filter-control student-select"><strong>Student Name</strong><select id="studentFilter"></select></label>
+        <button class="reset-button" id="resetButton" type="button">Clear all</button>
+      </div>
+    </section>
+
+    <section class="page-shell">
+      <section class="header-frame">
+        <section class="hero-grid">
+          <article class="hero-card">
+            <p class="eyebrow" id="schoolEyebrow"></p>
+            <h1>Teacher Dashboard</h1>
+            <h2 id="assessmentTitle"></h2>
+            <p class="hero-meta" id="assessmentMeta"></p>
+            <p class="summary" id="classSummary"></p>
+            <p class="scale"><strong>Performance Bands:</strong> 0 = No Evidence &middot; 1-2 = Beginning &middot; 3-4 = Developing &middot; 5-6 = Proficient &middot; 7-8 = Advanced</p>
+          </article>
+          <aside class="teacher-card">
+            <p class="eyebrow">TEACHER</p>
+            <h2 id="teacherName"></h2>
+            <p class="eyebrow class-label">CLASS</p>
+            <p id="className" class="class-name"></p>
+          </aside>
+        </section>
+      </section>
+
+      <section class="section-title"><span>Class Performance</span><small>Scores reflect the filters selected above.</small></section>
+      <section class="kpi-grid" id="kpiGrid"></section>
+
+      <section class="chart-grid performance-grid">
+        <article class="panel">
+          <div class="panel-header">
+            <div><h2>Raw Score Distribution (0-8)</h2><p>Click a score bar to focus the roster.</p></div>
+            <button class="clear-link" id="clearRawScore" type="button" hidden>Clear score</button>
+          </div>
+          <div class="raw-chart-layout"><span class="raw-y-axis">Number of Students</span><div class="bar-chart raw-chart" id="rawScoreChart"></div></div>
+          <p class="axis-label">Raw Score</p>
+        </article>
+        <article class="panel">
+          <div class="panel-header"><div><h2>Class Average</h2><p>Average raw score out of 8.</p></div></div>
+          <div class="average-visual" id="classAverageChart"></div>
+        </article>
+      </section>
+
+      <section class="section-title"><span>Instructional Support</span><small>Resources tied to the class's domain results.</small></section>
+      <section class="chart-grid support-grid">
+        <article class="panel resource-panel">
+          <div class="panel-header"><div><h2>Lesson Resources</h2><p id="resourceIntro">Targeted practice for current class needs.</p></div></div>
+          <div class="resource-list" id="resourceList"></div>
+        </article>
+        <article class="panel">
+          <div class="panel-header">
+            <div><h2>Domain Average Scores</h2><p>Click a domain to focus the skill detail below.</p></div>
+            <button class="clear-link" id="clearDomain" type="button" hidden>Clear domain</button>
+          </div>
+          <div class="domain-chart" id="domainChart"></div>
+          <p class="chart-note">Purpose &amp; Organization and Evidence &amp; Elaboration are out of 3 points. Language Usage &amp; Conventions is out of 2 points.</p>
+        </article>
+      </section>
+
+      <section class="section-title"><span>Skill Insights</span><small>Click a skill row to focus the matching detail records.</small></section>
+      <article class="panel skill-panel">
+        <div class="panel-header">
+          <div><h2>Skill-Level Ratings by Domain</h2><p>Rating distribution across students with submitted work.</p></div>
+          <button class="clear-link" id="clearSkill" type="button" hidden>Clear skill</button>
+        </div>
+        <div class="legend" id="skillLegend"></div>
+        <div class="skills-chart" id="skillsChart"></div>
+      </article>
+
+      <section class="section-title"><span>Student Detail</span><small>Sort, search, or select a row to review its rubric ratings.</small></section>
+      <article class="panel roster-panel">
+        <div class="roster-toolbar"><div><h2>Student Roster</h2><p id="rosterCount"></p></div><input id="tableSearch" type="search" placeholder="Search this roster"></div>
+        <div class="table-wrap"><table id="rosterTable"><thead></thead><tbody></tbody></table></div>
+      </article>
+      <article class="panel detail-panel" id="detailPanel" hidden>
+        <div class="panel-header"><div><h2 id="detailTitle">Student Rubric Detail</h2><p id="detailSubtitle"></p></div><button class="clear-link" id="closeDetail" type="button">Close</button></div>
+        <div id="studentDetail" class="rubric-detail"></div>
+      </article>
+      <article class="panel skill-detail-panel">
+        <div class="roster-toolbar"><div><h2>Student Skill Detail</h2><p id="skillDetailCount"></p></div><input id="skillSearch" type="search" placeholder="Search student skills"></div>
+        <div class="table-wrap skill-detail-wrap">
+          <table id="skillDetailTable">
+            <thead><tr><th>Student Name</th><th>Domain</th><th>Skill</th><th>Rating</th><th>Grade</th><th>Section</th></tr></thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </article>
+    </section>
+  </main>
+  <div class="skill-tooltip" id="skillTooltip" role="status" aria-live="polite" hidden></div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>

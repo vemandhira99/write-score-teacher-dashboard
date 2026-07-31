@@ -1,0 +1,105 @@
+:root{--ink:#182230;--muted:#667085;--blue:#1455c4;--blue2:#0c83df;--canvas:#f3f6fa;--line:#dce4ed;--card:#fff;--green:#37a56b;--orange:#ff8247;--red:#d84257;--navy:#40547e}*{box-sizing:border-box}body{margin:0;background:var(--canvas);color:var(--ink);font:15px/1.45 Arial,Helvetica,sans-serif}.topbar{height:64px;background:#101b2c;color:#fff;display:flex;justify-content:space-between;align-items:center;padding:0 max(24px,4vw);position:sticky;top:0;z-index:5}.brand{color:#fff;text-decoration:none;font-weight:800;letter-spacing:1.5px}.brand-mark{display:inline-grid;place-items:center;width:28px;height:28px;background:#4da4ee;border-radius:5px;margin-right:7px}.topbar-actions{display:flex;gap:12px;align-items:center}.demo-pill{color:#b8d8f5;font-size:13px}.text-button,.reset-button,.clear-link,.primary-button{border:0;background:none;font:inherit;cursor:pointer}.text-button{color:#e5edf7}.primary-button{background:#1c75d3;color:#fff;padding:9px 14px;border-radius:5px}.filter-band{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:64px;z-index:4}.filter-inner{max-width:1540px;margin:auto;padding:12px 30px;display:flex;align-items:end;gap:11px;overflow:auto}.filter-heading{white-space:nowrap;padding:8px 4px}.filter-icon{color:var(--blue);font-size:18px;margin-right:5px}.filter-inner label{display:grid;gap:4px;color:#475467;font-size:12px;font-weight:700;min-width:130px}.filter-inner select,.filter-inner input{height:34px;border:1px solid #cfd8e3;border-radius:5px;background:#fff;padding:0 9px;color:var(--ink);font:14px Arial}.filter-inner .student-search{min-width:180px}.reset-button{color:var(--blue);font-weight:700;padding:8px}.page-shell{max-width:1540px;margin:0 auto;padding:28px 30px 60px}.hero-grid{display:grid;grid-template-columns:minmax(0,3fr) minmax(260px,1fr);gap:20px}.hero-card,.teacher-card,.panel,.kpi{background:var(--card);border:1px solid #e1e8f0;border-radius:8px}.hero-card{padding:28px 30px}.teacher-card{padding:28px}.eyebrow{font-weight:800;letter-spacing:1.2px;color:#475467;font-size:13px;margin:0 0 12px}.hero-card h1{font-size:38px;margin:0 0 18px}.hero-card h2,.teacher-card h2{font-size:25px;margin:0 0 10px}.hero-meta,.summary,.scale{margin:9px 0;color:#364152;font-size:17px}.class-label{margin-top:28px}.class-name{font-size:18px;margin:0}.section-title{display:flex;justify-content:space-between;align-items:center;margin:28px 0 12px}.section-title span{font-size:21px;font-weight:800}.section-title small{color:var(--muted)}.kpi-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.kpi{padding:20px;min-height:142px}.kpi-label{font-weight:800;font-size:16px;margin:0 0 22px}.kpi-value{font-size:38px;line-height:1;color:#172536}.kpi-note{font-size:12px;color:#667085;margin:9px 0 0}.chart-grid{display:grid;gap:20px;margin-top:20px}.overview-grid{grid-template-columns:1fr 1.35fr}.support-grid{grid-template-columns:1fr 1fr}.panel{padding:23px 25px}.panel-header,.roster-toolbar{display:flex;justify-content:space-between;gap:15px;align-items:flex-start}.panel h2,.roster-toolbar h2{margin:0;font-size:21px}.panel-header p,.roster-toolbar p{margin:5px 0 0;color:#667085}.clear-link{color:var(--blue);font-size:13px;padding:4px}.bar-chart{height:315px;display:flex;align-items:flex-end;gap:12px;padding:22px 10px 34px;border-bottom:1px solid var(--line);background:repeating-linear-gradient(to top,transparent 0 58px,#edf1f5 59px 60px)}.raw-bar{height:100%;flex:1;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:7px;border:0;background:none;cursor:pointer;color:#344054}.raw-bar.active .bar-fill{outline:3px solid #172536;outline-offset:3px}.bar-fill{width:100%;max-width:56px;min-height:2px;border-radius:4px 4px 0 0}.bar-count{font-weight:700}.bar-score{font-size:14px}.axis-label{text-align:center;color:#475467;margin:10px 0 0;font-size:13px}.domain-chart{padding:18px 4px 4px}.domain-row{display:grid;grid-template-columns:245px 1fr 72px;gap:12px;align-items:center;margin:19px 0}.domain-name{text-align:right;color:#475467}.domain-track,.average-track{height:20px;background:#edf1f5;border-radius:3px;overflow:hidden}.domain-fill,.average-fill{height:100%;background:var(--blue);border-radius:3px}.domain-value{font-weight:700}.chart-note{color:#667085;font-size:13px;margin:20px 0 0}.average-visual{padding:45px 20px 34px}.average-number{font-size:47px;font-weight:800;color:var(--blue);margin-bottom:18px}.average-caption{color:#667085;margin-top:9px}.resource-list{display:grid;gap:13px;margin-top:22px}.resource-list a{color:#1268d6;text-decoration:none;line-height:1.4}.resource-list a:hover{text-decoration:underline}.legend{display:flex;flex-wrap:wrap;gap:13px;margin:17px 0}.legend-item{display:flex;align-items:center;gap:6px;color:#475467;font-size:13px}.legend-swatch{height:12px;width:12px;border-radius:3px}.skills-chart{display:grid;gap:19px}.skill-group-title{font-weight:800;color:#2450a4;margin-top:7px}.skill-row{display:grid;grid-template-columns:220px 1fr 50px;gap:12px;align-items:center}.skill-name{color:#475467}.skill-stack{height:19px;background:#edf1f5;display:flex;border-radius:3px;overflow:hidden}.skill-segment{height:100%;min-width:0}.skill-total{font-size:13px;color:#667085}.roster-toolbar{align-items:center;margin-bottom:16px}.roster-toolbar input{width:220px;height:35px;border:1px solid #cfd8e3;border-radius:5px;padding:0 10px}.table-wrap{overflow:auto;max-height:520px}table{width:100%;border-collapse:collapse;min-width:900px}th{position:sticky;top:0;background:#fff;border-bottom:2px solid #344054;text-align:left;padding:11px 10px;font-size:13px;white-space:nowrap;cursor:pointer}td{padding:10px;border-bottom:1px solid #e9eef3;white-space:nowrap}tbody tr{cursor:pointer}tbody tr:hover{background:#f2f7ff}.raw-cell{position:relative;overflow:hidden}.raw-cell::before{content:"";position:absolute;inset:4px auto 4px 0;width:var(--score-width);background:#ddecff;z-index:0}.raw-cell span{position:relative;z-index:1}.band-pill{display:inline-block;padding:3px 8px;border-radius:20px;font-size:12px;font-weight:700;background:#e8f1ff;color:#2450a4}.rubric-detail{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.rubric-domain{border:1px solid #e1e8f0;border-radius:6px;padding:15px}.rubric-domain h3{font-size:15px;color:#2450a4;margin:0 0 10px}.rubric-skill{display:flex;justify-content:space-between;padding:5px 0}.rating{font-size:12px;font-weight:700;padding:2px 7px;border-radius:12px;background:#edf4ff;color:#2450a4}.toast{position:fixed;right:22px;bottom:22px;background:#172536;color:#fff;padding:11px 15px;border-radius:5px;opacity:0;transform:translateY(8px);transition:.2s;pointer-events:none}.toast.show{opacity:1;transform:none}@media(max-width:900px){.hero-grid,.overview-grid,.support-grid{grid-template-columns:1fr}.kpi-grid{grid-template-columns:repeat(2,1fr)}.filter-inner{padding:10px 16px}.page-shell{padding:20px 16px}.topbar{padding:0 16px}.domain-row{grid-template-columns:150px 1fr 48px}.skill-row{grid-template-columns:150px 1fr 35px}.rubric-detail{grid-template-columns:1fr}}@media print{.topbar,.filter-band,.clear-link,.section-title small{display:none!important}body{background:#fff}.page-shell{padding:0}.panel,.hero-card,.teacher-card,.kpi{break-inside:avoid}.page-shell{max-width:none}}
+
+/* Jasmine Ramey demo: focused controls and reference-matched header */
+.topbar{height:94px;background:#fff;color:#172536;border-bottom:1px solid #d8e0e8;padding:0 24px}
+.brand{color:#172536;font-size:26px;font-weight:500;letter-spacing:0}
+.brand-mark{display:none}
+.filter-band{top:94px;background:#fff;border-bottom:1px solid #e5eaf0}
+.filter-inner{max-width:none;min-height:82px;padding:12px 24px;gap:24px;align-items:center}
+.filter-heading{margin-right:0}.filter-icon{font-size:30px;color:#1677e8}
+.filter-control{display:flex!important;align-items:center;gap:14px;min-width:auto!important;white-space:nowrap}
+.filter-control strong{font-size:16px;letter-spacing:0;color:#172536}
+.filter-control select{width:246px!important;height:48px!important;border:1px solid #d4dce7;border-radius:8px;color:#6f7d90;background:#fff;padding:0 14px;font-size:16px}
+.student-select select{width:246px!important}
+.reset-button{margin-left:auto;background:none;border:0;color:#173c6c;padding:9px 0;font-size:16px}
+.page-shell{padding:22px 20px 34px;max-width:none}
+.header-frame{background:#f1f3f5;border:0;border-radius:12px;padding:24px}
+.hero-grid{gap:22px;margin:0}.hero-card,.teacher-card{background:#fff;border:0;box-shadow:none;border-radius:10px;padding:28px 26px}.hero-card h1{font-size:42px}.hero-card h2{font-size:29px}.teacher-card h2{font-size:39px}.hero-card .eyebrow{font-size:18px}.teacher-card .eyebrow{font-size:19px}
+@media(max-width:1000px){.topbar{height:auto;min-height:76px}.filter-band{top:0}.filter-inner{gap:12px}.filter-control{width:100%;justify-content:space-between}.filter-control select{width:min(70%,280px)!important}.reset-button{margin-left:0}.header-frame{padding:14px}.brand{font-size:20px}}
+
+/* Keep the demo header focused on the teacher identity. */
+.hero-grid{grid-template-columns:1fr}
+.hero-card{min-height:155px;display:flex;align-items:center}
+.hero-card h1{margin:0}
+.hero-card .eyebrow,.hero-card h2,.hero-card .hero-meta,.hero-card .summary,.hero-card .scale,.teacher-card{display:none}
+
+/* Restore the dashboard content header; only the top navigation title is simplified. */
+.hero-grid{grid-template-columns:minmax(0,3fr) minmax(260px,1fr)}
+.hero-card{min-height:0;display:block}
+.hero-card h1{margin:0 0 18px}
+.hero-card .eyebrow,.hero-card h2,.hero-card .hero-meta,.hero-card .summary,.hero-card .scale{display:block}
+.teacher-card{display:block}
+
+/* The standalone demo starts directly with its filters. */
+.topbar{display:none!important}
+.filter-band{top:0!important}
+
+/* Keep every KPI card aligned even when a title wraps to two lines. */
+.kpi-grid{align-items:stretch}
+.kpi{display:flex;flex-direction:column;min-height:172px;padding:24px 28px}
+.kpi-label{min-height:46px;margin:0 0 18px;line-height:1.35}
+.kpi-value{line-height:1;margin:0}
+.kpi-note{min-height:18px;margin:12px 0 0;line-height:1.35}
+/* First visual row: distribution and class average sit side by side. */
+.performance-grid{grid-template-columns:1fr 1fr}
+@media(max-width:900px){.performance-grid{grid-template-columns:1fr}}
+/* Instructional Support: group resources by domain and keep the chart calm. */
+.resource-list{gap:0;margin-top:18px}
+.resource-group{padding:0 0 16px;margin:0 0 16px;border-bottom:1px solid #e8edf3}
+.resource-group:last-child{padding-bottom:0;margin-bottom:0;border-bottom:0}
+.resource-group h3{margin:0 0 6px;font-size:17px;color:#1d2939}
+.resource-group p{margin:0 0 12px;color:#475467;font-size:14px}
+.resource-group a{display:block;margin:0 0 9px;font-size:14px}
+.domain-fill.domain-orange{background:#ff8247}
+.domain-fill.domain-green{background:#55be87}
+.domain-fill.domain-navy{background:#40547e}
+.domain-chart{padding:16px 10px 2px}
+.domain-row{grid-template-columns:235px minmax(160px,1fr) 74px;margin:17px 0}
+.domain-track{height:22px;background:#f0f3f6}
+.domain-value{color:#344054;font-size:14px}
+@media(max-width:900px){.resource-group{padding-bottom:14px;margin-bottom:14px}.domain-row{grid-template-columns:145px minmax(90px,1fr) 54px;gap:8px}.domain-name{font-size:13px}.domain-value{font-size:12px}}
+/* Let the domain chart use the same visual height as the resource panel. */
+.support-grid > .panel:not(.resource-panel){display:flex;flex-direction:column}
+.support-grid > .panel:not(.resource-panel) .domain-chart{flex:1;min-height:310px;display:flex;flex-direction:column;justify-content:space-evenly;padding:18px 10px 12px}
+.support-grid > .panel:not(.resource-panel) .domain-row{margin:0}
+.support-grid > .panel:not(.resource-panel) .chart-note{margin-top:18px}
+@media(max-width:900px){.support-grid > .panel:not(.resource-panel) .domain-chart{min-height:220px}}
+/* Final skill detail table mirrors the roster while keeping per-skill records easy to scan. */
+.skill-detail-panel{margin-top:20px}
+.skill-detail-wrap{max-height:480px;border:1px solid #e6ebf1;border-radius:6px}
+#skillDetailTable{min-width:780px}
+#skillDetailTable th{cursor:default}
+#skillDetailTable td{padding:9px 10px}
+#skillDetailTable tbody tr{cursor:default}
+#skillDetailTable tbody tr:nth-child(odd){background:#f8fafc}
+#skillDetailTable tbody tr:hover{background:#f2f7ff}
+.skill-rating{font-weight:700;color:#344054}
+.empty-row{text-align:center;color:#667085;padding:24px!important}
+.raw-chart-layout{display:grid;grid-template-columns:26px minmax(0,1fr);align-items:stretch}.raw-y-axis{writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;justify-content:center;color:#475467;font-size:13px}.raw-chart-layout .raw-chart{min-width:0}
+
+/* Final dashboard polish */
+.panel-header .clear-link[hidden] { display: none; }
+.raw-chart { height: 330px; gap: 16px; padding: 22px 16px 20px; border-bottom: 0; background: repeating-linear-gradient(to top, transparent 0 54px, #e9eef4 55px 56px); }
+.raw-bar { position: relative; justify-content: flex-end; gap: 8px; padding: 0 0 3px; transition: transform .18s ease; }
+.raw-bar:hover, .raw-bar:focus-visible { transform: translateY(-2px); outline: 0; }
+.raw-bar:focus-visible .bar-fill, .raw-bar.active .bar-fill { outline: 3px solid #182230; outline-offset: 3px; }
+.raw-bar:hover .bar-fill { filter: brightness(.94); }
+.bar-fill { max-width: 64px; transition: filter .18s ease; }
+.chart-empty { align-self: center; margin: auto; color: var(--muted); }
+.domain-row { width: 100%; border: 0; background: transparent; padding: 7px 0; cursor: pointer; text-align: left; font: inherit; color: inherit; }
+.domain-row:hover .domain-track, .domain-row.active .domain-track { box-shadow: 0 0 0 2px #cfe0fb; }
+.domain-row:focus-visible, .skill-row:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 5px; }
+.skill-row { width: 100%; border: 0; background: transparent; padding: 4px 0; cursor: pointer; text-align: left; font: inherit; color: inherit; }
+.skill-row:hover .skill-stack, .skill-row.active .skill-stack { box-shadow: 0 0 0 2px #cfe0fb; }
+@media (max-width: 850px) {
+  .raw-chart { height: 280px; gap: 10px; padding-left: 8px; padding-right: 8px; }
+  .bar-fill { max-width: 46px; }
+}
+/* Keep the teacher identifier compact on laptop-sized demo screens. */
+.teacher-card h2 { font-size: 30px; line-height: 1.15; white-space: nowrap; letter-spacing: 0; }
+@media (max-width: 900px) { .teacher-card h2 { white-space: normal; } }
+/* Skill-rating hover card: count and percentage breakdown for a selected skill. */
+.skill-tooltip{position:fixed;z-index:20;width:300px;padding:15px 16px;background:#fff;border:1px solid #e1e8f0;border-radius:8px;box-shadow:0 10px 28px rgba(24,34,48,.2);pointer-events:none;color:#344054}
+.skill-tooltip strong{display:block;color:#182230;font-size:15px;margin-bottom:10px;line-height:1.25}
+.tooltip-rating,.tooltip-total{display:grid;grid-template-columns:1fr 36px 72px;align-items:center;gap:8px;padding:3px 0;font-size:13px}
+.tooltip-rating b{font-weight:500}.tooltip-rating i{display:inline-block;width:11px;height:11px;border-radius:50%;margin-right:7px;vertical-align:-1px}.tooltip-rating em,.tooltip-total em{font-style:normal;text-align:right;color:#475467}.tooltip-total{border-top:1px solid #e7ecf2;margin-top:7px;padding-top:8px}.tooltip-total b{font-weight:700;color:#182230}
